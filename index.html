@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KOUSHU-DENWA-Nii | Official</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #05070a;
+    color: #fff;
+    font-family: Arial, "Noto Sans JP", sans-serif;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: rgba(5,7,10,.75);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: .15em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: .15em;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 700px;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            #ff642c 0%,
+            #a52c24 18%,
+            transparent 43%
+        ),
+        linear-gradient(
+            130deg,
+            #05070a,
+            #0d1119 45%,
+            #35171c 75%,
+            #050507
+        );
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.1)
+        );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1150px;
+    margin: auto;
+
+    min-height: 700px;
+
+    padding: 150px 5% 80px;
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* =========================
+   PROFILE IMAGE
+========================= */
+
+.profile {
+    width: 175px;
+    height: 175px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    padding: 3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            white,
+            #ff5b1a
+        );
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+/* =========================
+   HERO TEXT
+========================= */
+
+.eyebrow {
+    font-size: 11px;
+    letter-spacing: .35em;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(45px, 7vw, 85px);
+
+    line-height: .95;
+
+    letter-spacing: -.05em;
+}
+
+.handle {
+    color: #ccc;
+    font-size: 16px;
+}
+
+.tagline {
+    color: #ddd;
+    line-height: 1.8;
+}
+
+/* =========================
+   SOUNDCLOUD BUTTON
+========================= */
+
+.soundcloud-button {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 15px;
+
+    margin-top: 15px;
+
+    padding: 15px 25px;
+
+    border-radius: 40px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff5415,
+            #ff7923
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: .25s;
+}
+
+.soundcloud-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 50px rgba(255,90,25,.4);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    max-width: 1150px;
+
+    margin: auto;
+
+    padding: 90px 5%;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 38px;
+    margin: 0;
+}
+
+/* =========================
+   SOUNDCLOUD
+========================= */
+
+.soundcloud-box {
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: #090c11;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.5);
+}
+
+.soundcloud-header {
+    padding: 18px 20px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 13px;
+}
+
+.soundcloud-header span {
+    color: #ff641e;
+}
+
+.soundcloud-box iframe {
+    width: 100%;
+    height: 520px;
+
+    border: none;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 60px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.about h2 {
+    font-size: 40px;
+}
+
+.about p {
+    color: #bbb;
+
+    line-height: 2;
+}
+
+/* =========================
+   VISUAL
+========================= */
+
+.visual {
+    min-height: 330px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #32182b,
+            #07090d
+        );
+}
+
+.sun {
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    right: 20%;
+    top: 35px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffd47b,
+            #ff6a2c 45%,
+            #9e292d 70%,
+            transparent 72%
+        );
+}
+
+.building {
+    position: absolute;
+
+    bottom: 0;
+
+    background: #07090d;
+}
+
+.b1 {
+    left: 0;
+    width: 25%;
+    height: 50%;
+}
+
+.b2 {
+    left: 20%;
+    width: 18%;
+    height: 75%;
+}
+
+.b3 {
+    left: 37%;
+    width: 20%;
+    height: 55%;
+}
+
+.b4 {
+    right: 18%;
+    width: 22%;
+    height: 82%;
+}
+
+.b5 {
+    right: 0;
+    width: 22%;
+    height: 60%;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.links {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.2fr;
+
+    gap: 60px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+}
+
+.link-list {
+    display: grid;
+    gap: 10px;
+}
+
+.link-list a {
+    display: flex;
+
+    align-items: center;
+
+    padding: 14px 18px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    background: #090c11;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.link-list a:hover {
+    border-color: #ff641e;
+    transform: translateX(4px);
+}
+
+.link-list span:last-child {
+    margin-left: auto;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    text-align: center;
+
+    padding: 100px 5%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #28151c,
+            #05070a 60%
+        );
+}
+
+.contact h2 {
+    font-size: 45px;
+}
+
+.contact p {
+    color: #aaa;
+}
+
+.contact-button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 28px;
+
+    border:
+        1px solid rgba(255,255,255,.5);
+
+    border-radius: 30px;
+
+    color: white;
+
+    text-decoration: none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 25px 5%;
+
+    border-top:
+        1px solid rgba(255,255,255,.1);
+
+    color: #666;
+
+    font-size: 11px;
+
+    display: flex;
+
+    justify-content: space-between;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero-content {
+        display: block;
+
+        padding:
+            130px 25px 80px;
+    }
+
+    .profile {
+        width: 120px;
+        height: 120px;
+
+        margin-bottom: 30px;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .section {
+        padding: 65px 20px;
+    }
+
+    .about,
+    .links {
+        grid-template-columns: 1fr;
+    }
+
+    .soundcloud-box iframe {
+        height: 500px;
+    }
+
+    .contact h2 {
+        font-size: 32px;
+    }
+
+    footer {
+        display: block;
+    }
+
+    footer div {
+        margin: 5px 0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="nav">
+
+    <a href="#home" class="logo">
+        KOUSHU-DENWA-Nii
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="#home">HOME</a>
+
+        <a href="#music">MUSIC</a>
+
+        <a href="#about">ABOUT</a>
+
+        <a href="#links">LINKS</a>
+
+        <a href="#contact">CONTACT</a>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <div class="profile">
+
+            <img
+                src="avatar.jpg"
+                alt="KOUSHU-DENWA-Nii"
+            >
+
+        </div>
+
+
+        <div>
+
+            <div class="eyebrow">
+                AI × SOUND × IMAGINATION
+            </div>
+
+            <h1>
+                KOUSHU-<br>
+                DENWA-Nii
+            </h1>
+
+            <div class="handle">
+                @1114aji
+            </div>
+
+            <p class="tagline">
+                AIで生み出す、<br>
+                まだ見ぬ音の世界へ——
+            </p>
+
+
+            <!-- SoundCloudへのボタン -->
+
+            <a
+                class="soundcloud-button"
+                href="https://soundcloud.com/bjjv-hjbh"
+                target="_blank"
+                rel="noopener"
+            >
+
+                ☁
+
+                Listen on SoundCloud
+
+                →
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<section id="music" class="section">
+
+    <div class="section-title">
+
+        <div class="eyebrow">
+            ALL MUSIC
+        </div>
+
+        <h2>
+            公開中の楽曲
+        </h2>
+
+    </div>
+
+
+    <div class="soundcloud-box">
+
+        <div class="soundcloud-header">
+
+            <strong>
+                ● KOUSHU-DENWA-Nii / @1114aji
+            </strong>
+
+            <span>
+                SOUNDCLOUD
+            </span>
+
+        </div>
+
+
+        <!--
+        SoundCloud公式プレイヤー
+
+        プロフィールを指定しているので、
+        SoundCloud側に公開している楽曲を表示できます。
+        -->
+
+        <iframe
+            title="KOUSHU-DENWA-Nii SoundCloud"
+            scrolling="no"
+            allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/bjjv-hjbh&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
+        </iframe>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about" class="section about">
+
+    <div>
+
+        <div class="eyebrow">
+            ABOUT
+        </div>
+
+        <h2>
+            音楽で、<br>
+            つながる世界
+        </h2>
+
+        <p>
+            KOUSHU-DENWA-Nii（コウシュデンワ）は、
+            Sunoで生み出した楽曲を中心に、
+            SoundCloudで音楽を公開している
+            AI × 音楽のアーティストです。
+        </p>
+
+        <p>
+            ジャンルや既存の枠にとらわれず、
+            音や雰囲気から新しい世界を描く。
+            あなたの日常にそっと寄り添う
+            サウンドを届けます。
+        </p>
+
+    </div>
+
+
+    <div class="visual">
+
+        <div class="sun"></div>
+
+        <div class="building b1"></div>
+
+        <div class="building b2"></div>
+
+        <div class="building b3"></div>
+
+        <div class="building b4"></div>
+
+        <div class="building b5"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LINKS
+========================= -->
+
+<section id="links" class="section links">
+
+    <div>
+
+        <div class="eyebrow">
+            LINKS
+        </div>
+
+        <h2>
+            各種リンク
+        </h2>
+
+    </div>
+
+
+    <div class="link-list">
+
+        <a
+            href="https://soundcloud.com/bjjv-hjbh"
+            target="_blank"
+            rel="noopener"
+        >
+
+            ☁
+
+            SoundCloud
+
+            <span>→</span>
+
+        </a>
+
+
+        <a href="#">
+            ♪
+            Suno
+            <span>→</span>
+        </a>
+
+
+        <a href="#">
+            ▶
+            YouTube
+            <span>→</span>
+        </a>
+
+
+        <a href="#">
+            ◎
+            Instagram
+            <span>→</span>
+        </a>
+
+
+        <a href="#">
+            𝕏
+            X (Twitter)
+            <span>→</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact" class="contact">
+
+    <div class="eyebrow">
+        CONTACT
+    </div>
+
+    <h2>
+        Let's make some sound.
+    </h2>
+
+    <p>
+        コラボレーションやお問い合わせはこちら。
+    </p>
+
+    <a
+        class="contact-button"
+        href="mailto:hello@example.com"
+    >
+        CONTACT →
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div>
+        KOUSHU-DENWA-Nii　|　@1114aji
+    </div>
+
+    <div>
+        © 2026 KOUSHU-DENWA-Nii
+    </div>
+
+</footer>
+
+</body>
+</html>
